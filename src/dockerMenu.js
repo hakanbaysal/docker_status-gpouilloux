@@ -82,7 +82,7 @@ const DockerMenu = new Lang.Class({
             const containers = Docker.getContainers();
             if (containers.length > 0) {
                 containers.forEach((container) => {
-                    const subMenu = new DockerSubMenuMenuItem.DockerSubMenuMenuItem(container.name, container.status);
+                    const subMenu = new DockerSubMenuMenuItem.DockerSubMenu(container.name, container.status);
                     this.menu.addMenuItem(subMenu);
                 });
             } else {

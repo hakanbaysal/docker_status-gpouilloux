@@ -19,7 +19,6 @@
 'use strict';
 
 const St = imports.gi.St;
-const Lang = imports.lang;
 const PopupMenu = imports.ui.popupMenu;
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
@@ -50,12 +49,10 @@ const getStatus = (statusMessage) => {
 }
 
 // Menu entry representing a docker container
-const DockerSubMenuMenuItem = new Lang.Class({
-    Name: 'DockerMenu.DockerSubMenuMenuItem',
-    Extends: PopupMenu.PopupSubMenuMenuItem,
+class DockerSubMenu extends PopupMenu.PopupSubMenuMenuItem {
 
-    _init: function (containerName, containerStatusMessage) {
-        this.parent(containerName);
+    constructor (containerName, containerStatusMessage) {
+        super(containerName);
 
         switch (getStatus(containerStatusMessage)) {
             case "stopped":
@@ -79,4 +76,4 @@ const DockerSubMenuMenuItem = new Lang.Class({
                 break;
         }
     }
-});
+};
